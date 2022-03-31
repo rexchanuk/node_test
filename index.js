@@ -92,12 +92,11 @@ const init = async () => {
 			if(request.payload == null){
 				return ret_data.data;
 			}else{
-				for(let i=0;i<ret_data.data.length; i++){
-					if(ret_data.data[i].id == request.payload.postid){
-						return ret_data.data[i];
-					}
+				try{
+					return ret_data.data.find(pData => pData.id == request.payload.postid);
+				}catch(e){
+					return error_arr
 				}
-				return error_arr
 			}
 		}
     });
